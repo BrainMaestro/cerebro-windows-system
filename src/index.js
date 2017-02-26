@@ -10,7 +10,6 @@ export function fn({ display, term, action }) {
     filteredCommands.forEach(title => {
       const command = commands[title];
       const cmd = typeof command == 'string' ? command : command.command;
-      const subtitle = command.admin ? 'Careful, only works as admin' : command.subtitle;
       const onSelect = () => {
         setTimeout(() => shellCommand(cmd), wait * 1000);
       };
@@ -22,7 +21,7 @@ export function fn({ display, term, action }) {
 
       display({
         title,
-        subtitle,
+        subtitle: command.subtitle,
         icon: command.icon,
         onSelect,
       });
