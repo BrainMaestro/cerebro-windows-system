@@ -9,9 +9,9 @@ export function fn({ display, term, action }) {
   if (filteredCommands.length) {
     filteredCommands.forEach(title => {
       const command = commands[title];
-      const cmd = typeof command == 'string' ? command : command.command;
+      const subtitle = command.indexOf('nircmd') != -1 ? 'Needs nircmd.exe in your PATH' : '';
       const onSelect = () => {
-        setTimeout(() => shellCommand(cmd), wait * 1000);
+        setTimeout(() => shellCommand(command), wait * 1000);
       };
 
       if (wait) {
@@ -21,8 +21,7 @@ export function fn({ display, term, action }) {
 
       display({
         title,
-        subtitle: command.subtitle,
-        icon: command.icon,
+        subtitle,
         onSelect,
       });
     })

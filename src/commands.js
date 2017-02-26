@@ -1,32 +1,14 @@
-const admin = 'Careful, only works as admin';
-const nircmd = 'Needs nircmd.exe in your PATH';
-
 const commands = {
   'Open Trash': 'start shell:recyclebinfolder',
-  'Empty Trash': {
-    command: 'nircmd.exe emptybin',
-    subtitle: nircmd,
-  },
-  Sleep: {
-    command: 'nircmd.exe standby',
-    subtitle: nircmd,
-  },
+  'Empty Trash': 'nircmd.exe emptybin',
+  Sleep:'nircmd.exe standby',
   Lock: 'rundll32.exe user32.dll,LockWorkStation',
   Hibernate: 'rundll32.exe powrprof.dll,SetSuspendState',
   Restart: 'shutdown.exe -r -t 00',
   Shutdown: 'shutdown.exe -s -t 00',
-  Mute: {
-    command: 'nircmd.exe mutesysvolume 1',
-    subtitle: nircmd,
-  },
-  Unmute: {
-    command: 'nircmd.exe mutesysvolume 0',
-    subtitle: nircmd,
-  },
-  Screensaver: {
-    command: 'nircmd.exe screensaver',
-    subtitle: nircmd,
-  },
+  Mute:'nircmd.exe mutesysvolume 1',
+  Unmute:'nircmd.exe mutesysvolume 0',
+  Screensaver:'nircmd.exe screensaver',
   'Display off': 'nircmd.exe monitor off',
 };
 
