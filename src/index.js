@@ -9,17 +9,20 @@ export function fn({ display, term, action }) {
   if (filteredCommands.length) {
     filteredCommands.forEach(title => {
       const command = commands[title];
+      const cmd = typeof command == 'string' ? command : command.command;
+      const subtitle = command.admin ? 'Careful, only works as admin' : command.subtitle;
       const onSelect = () => {
-        setTimeout(() => shellCommand(command.command), wait * 1000);
+        setTimeout(() => shellCommand(cmd), wait * 1000);
       };
 
       if (wait) {
-        title += ` in ${wait} seconds`;
+        title += ` in ${wait} second`;
+        title += wait > 1 ? 's' : '';
       }
 
       display({
         title,
-        subtitle: command.subtitle,
+        subtitle,
         icon: command.icon,
         onSelect,
       });
