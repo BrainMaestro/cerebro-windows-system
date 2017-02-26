@@ -1,15 +1,15 @@
 const commands = {
-  'Open Trash': 'start shell:recyclebinfolder',
-  'Empty Trash': 'nircmd.exe emptybin',
-  Sleep:'nircmd.exe standby',
-  Lock: 'rundll32.exe user32.dll,LockWorkStation',
-  Hibernate: 'rundll32.exe powrprof.dll,SetSuspendState',
-  Restart: 'shutdown.exe -r -t 00',
-  Shutdown: 'shutdown.exe -s -t 00',
-  Mute:'nircmd.exe mutesysvolume 1',
-  Unmute:'nircmd.exe mutesysvolume 0',
-  Screensaver:'nircmd.exe screensaver',
   'Display off': 'nircmd.exe monitor off',
+  'Empty Trash': 'nircmd.exe emptybin',
+  Hibernate: 'rundll32.exe powrprof.dll,SetSuspendState',
+  Lock: 'rundll32.exe user32.dll,LockWorkStation',
+  Mute:'nircmd.exe mutesysvolume 1',
+  'Open Trash': 'start shell:recyclebinfolder',
+  Restart: 'shutdown.exe -r -t 00',
+  Screensaver:'nircmd.exe screensaver',
+  Shutdown: 'shutdown.exe -s -t 00',
+  Sleep:'nircmd.exe standby',
+  Unmute:'nircmd.exe mutesysvolume 0',
 };
 
 const MAX_VOLUME = 65535;

@@ -1,6 +1,6 @@
 {
   "name": "cerebro-windows-system",
-  "version": "0.0.1",
+  "version": "0.1.2",
   "description": "Cerebro plugin to automate some windows features",
   "license": "MIT",
   "repository": "BrainMaestro/cerebro-windows-system",
