@@ -1,29 +1,27 @@
 import { search, shellCommand } from 'cerebro-tools';
 import commands from './commands';
+import icon from './icon.png';
+import store from 'store';
+import { getDelay } from './utils';
 
 export function fn({ display, term, action }) {
-  const numbers = term.match(/[0-9]+/);
-  const wait = numbers ? numbers[0] : 0;
-  const filteredCommands = search(Object.keys(commands), term.replace(/[0-9]+/g, ''));
+  const [delay, suffix, match] = getDelay(term);
+  const filteredCommands = search(Object.keys(commands), term.replace(match, ''));
+  const results = filteredCommands.map(title => {
+    const command = commands[title];
+    const subtitle = command.indexOf('nircmd') != -1 ? 'Needs nircmd.exe in your PATH' : '';
+    title += suffix;
+    const onSelect = () => {
+      setTimeout(() => shellCommand(command), delay);
+    };
 
-  if (filteredCommands.length) {
-    filteredCommands.forEach(title => {
-      const command = commands[title];
-      const subtitle = command.indexOf('nircmd') != -1 ? 'Needs nircmd.exe in your PATH' : '';
-      const onSelect = () => {
-        setTimeout(() => shellCommand(command), wait * 1000);
-      };
+    return {
+      icon,
+      title,
+      subtitle,
+      onSelect,
+    }
+  });
 
-      if (wait) {
-        title += ` in ${wait} second`;
-        title += wait > 1 ? 's' : '';
-      }
-
-      display({
-        title,
-        subtitle,
-        onSelect,
-      });
-    })
-  }
+  display(results);
 }
