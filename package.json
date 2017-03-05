@@ -1,6 +1,6 @@
 {
   "name": "cerebro-windows-system",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "description": "Cerebro plugin to automate some windows features",
   "license": "MIT",
   "repository": "BrainMaestro/cerebro-windows-system",
@@ -32,9 +32,11 @@
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babili": "0.0.11",
     "cerebro-tools": "^0.1.0",
+    "css-loader": "^0.26.2",
     "file-loader": "^0.10.0",
     "react": "^15.4.1",
     "rimraf": "^2.6.1",
+    "style-loader": "^0.13.2",
     "url-loader": "^0.5.7",
     "webpack": "2.2.1"
   },
