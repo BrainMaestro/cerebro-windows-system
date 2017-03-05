@@ -1,3 +1,5 @@
+import store from 'store';
+
 const second = 1e3;
 const minute = 60 * second;
 const hour = 60 * minute;
@@ -21,4 +23,23 @@ export function getDelay(term) {
   suffix += delay > 1 ? 's' : '';
 
   return [delay * multiplier, suffix, matches[0]];
+}
+
+export function addDelayedCommand(title) {
+  const delayed = store.get('delayed') || {};
+
+  delayed[title] = title in delayed ? delayed[title] + 1: 1;
+  store.set('delayed', delayed);
+}
+
+export function removeDelayedCommand(title) {
+  const delayed = store.get('delayed');
+
+  if (delayed[title] > 1) {
+    delayed[title]--;
+  } else {
+    delete delayed[title];
+  }
+
+  store.set('delayed', delayed);
 }
