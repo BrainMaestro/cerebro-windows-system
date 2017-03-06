@@ -9,7 +9,7 @@ import Preview from './preview';
 export function fn({ display, term, action }) {
   const [delay, suffix, match] = getDelay(term);
   const filteredCommands = search(Object.keys(commands), term.replace(match, ''));
-  const delayed = store.get('delayed');
+  const delayed = store.get('delayed') || {};
   if (Object.keys(delayed).length) {
     display({
       icon,
